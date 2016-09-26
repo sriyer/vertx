@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="http://cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js"></script>
+<script src='vertx-web-client.js'></script>
+</head>
+<body>
+	<h1>Hello World!</h1>
+	<h1>
+		inside
+		<h1>
+			<div id='mydiv'></div>
+</body>
+
+<script type="text/javascript">
+	var eb = new EventBus('http://localhost:7070/events');
+
+	eb.onopen = function() {
+
+		// set a handler to receive a message
+		eb.registerHandler('ui-queue', function(error, message) {
+			//console.log('received a message: ' + JSON.stringify(message));
+			document.getElementById('mydiv').innerHTML = message.body;
+		});
+
+	}
+</script>
+</html>

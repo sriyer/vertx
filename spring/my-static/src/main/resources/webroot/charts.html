@@ -1,0 +1,65 @@
+<!doctype html>
+<html >
+<head>
+<meta charset="ISO-8859-1">
+<title>Cluster</title>
+<script src="Chart.bundle.min.js"></script>
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+
+<style>
+canvas {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+</style>
+</head>
+<body>
+	<div id="canvas-holder" style="width: 75%">
+		<canvas id="chart-area" />
+
+		<script>
+
+	var config = {
+			
+			type:'doughnut',
+			data: [
+			       200,344,454,543,232
+			       ],
+			backgroundColor: [
+			                    "#F7464A",
+			                    "#46BFBD",
+			                    "#FDB45C",
+			                    "#949FB1",
+			                    "#4D5360"
+			                ],
+
+			                     options: {
+			                         responsive: true,
+			                         legend: {
+			                             position: 'top',
+			                         },
+			                         title: {
+			                             display: true,
+			                             text: 'Chart.js Doughnut Chart'
+			                         },
+			                         animation: {
+			                             animateScale: true,
+			                             animateRotate: true
+			                         }
+			                     }
+	};
+	
+	window.onload = function() {
+        var ctx = document.getElementById("chart-area").getContext("2d");
+        window.myDoughnut = new Chart(ctx, config);
+    };
+	
+</script>
+</body>
+</html>
